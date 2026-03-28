@@ -78,9 +78,9 @@ QFileInfo FileManager::getFileInfo(const QString &filePath) const
 
 void FileManager::checkAllFiles()
 {
-    for (auto it = m_files.begin(); it != m_files.end(); ++it) {
-        const QString &path = it.key();
-        FileState &state = it.value();
+    for (auto i = m_files.begin(); i != m_files.end(); ++i) {
+        const QString &path = i.key();
+        FileState &state = i.value();
 
         QFileInfo currentInfo = getFileInfo(path);
         bool currentExists = currentInfo.exists();

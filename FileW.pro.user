@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 10.0.1, 2026-03-04T00:10:07. -->
+<!-- Written by QtCreator 10.0.1, 2026-03-27T13:51:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -238,6 +238,10 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/User/Desktop/FileW/FileW.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/User/Desktop/FileW/FileW.pro</value>
+    <value type="QString" key="RunConfiguration.Arguments">--interval=100 C:/Users/User/Desktop/FileW/file1.txt C:/Users/User/Desktop/FileW/file2.txt</value>
+    <value type="bool" key="RunConfiguration.Arguments.multi">true</value>
+    <value type="QString" key="RunConfiguration.OverrideDebuggerStartup">
+</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
