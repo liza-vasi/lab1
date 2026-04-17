@@ -18,12 +18,13 @@ QString Logger::getCurrentTime() const
 
 void Logger::log(const QString &message)
 {
-    std::cout << "[" << getCurrentTime().toStdString() << "] "<< message.toStdString() << std::endl;
+    std::cout << "[" << getCurrentTime().toStdString() << "] "
+              << message.toStdString() << std::endl;
 }
 
 void Logger::onFileCreated(const QString &filePath, qint64 size)
 {
-    log("event: crated | " + filePath + " | size: " + QString:: number(size) + " bytes" );
+    log("event: created | " + filePath + " | size: " + QString::number(size) + " bytes");
 }
 
 void Logger::onFileDeleted(const QString &filePath)
@@ -33,19 +34,19 @@ void Logger::onFileDeleted(const QString &filePath)
 
 void Logger::onFileSizeChanged(const QString &filePath, qint64 oldSize, qint64 newSize)
 {
-    log("event: size changed | " + filePath + "| old: " + QString:: number(oldSize)+ "| new: "+ QString:: number(newSize));
+    log("event: size changed | " + filePath + " | old: " + QString::number(oldSize) + " | new: " + QString::number(newSize));
 }
 
 void Logger::onFileModified(const QString &filePath, qint64 size)
 {
-     log("event: modified | " + filePath + " | size: " + QString:: number(size) + " bytes" );
+    log("event: modified | " + filePath + " | size: " + QString::number(size) + " bytes");
 }
 
 void Logger::onFileChanged(const QString &filePath, bool exists, qint64 size)
 {
     if (exists) {
-        log("status: exists |" + filePath + " | size: " + QString:: number(size) + " bytes" );
+        log("status: exists | " + filePath + " | size: " + QString::number(size) + " bytes");
     } else {
-        log("status: no exists |" + filePath);
+        log("status: no exists | " + filePath);
     }
 }
