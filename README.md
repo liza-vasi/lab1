@@ -93,25 +93,35 @@ onFileChanged(QString, bool, qint64) - обработка общего изме�
 - `[12:38:03] status: exists |C:/Users/User/Desktop/FileW/file1.txt | size: 5 bytes`
 - `[12:38:03] status: exists |C:/Users/User/Desktop/FileW/file2.txt | size: 4 bytes`
 
-**Создание файла test3.txt и запись в него строки "Hello":**
-- `echo "Hello" > file3.txt`
-
-**Вывод программы:**
-- `[12:39:03] event: crated |C:/Users/User/Desktop/FileW/file3.txt | size: 6 bytes`
-- `[12:39:03] status: exists |C:/Users/User/Desktop/FileW/file3.txt | size: 6 bytes`
-
 **Изменение размера файла test1.txt:**
 - `echo "..." >> file1.txt`
 
 **Вывод программы:**
-- `[12:39:57] event: size changed |C:/Users/User/Desktop/FileW/file1.txt | old: 5| new: 8`
-- `[12:39:57] status: exists |C:/Users/User/Desktop/FileW/file1.txt | size: 8 bytes`
+- `[12:39:57] event: size changed |C:/Users/User/Desktop/FileW/file1.txt | old: 5| new: 15`
+- `[12:39:57] status: exists |C:/Users/User/Desktop/FileW/file1.txt | size: 15 bytes`
 
 **Удаление файла test2.txt:**
-- `rm file2.txt`
+- `del file2.txt`
 
 **Вывод программы:**
 - `[12:40:30] event: deleted |C:/Users/User/Desktop/FileW/file2.txt`
 - `[12:40:30] status: no exists |C:/Users/User/Desktop/FileW/file2.txt`
 
 # 4. Тестовые случаи
+### Case 1: Мониторинг существующего файла
+
+### Case 2: Изменение размера файла
+
+### Case 3: Удаление файла
+
+### Case 4: Мониторинг нескольких файлов одновременно
+
+### Case 5: Запуск без указания файлов
+
+### Case 6: Настройка интервала проверки
+
+### Case 7: Несуществующий путь к файлу
+
+### Case 8: Модификация файла без изменения размера
+
+### Case 9: Добавление дубликата файла
