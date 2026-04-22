@@ -16,51 +16,51 @@
 
 ## 2.2 Описание классов
 ### 1. FileManager
-instance() - Получение единственного экземпляра (Singleton)
+- instance() - Получение единственного экземпляра (Singleton)
 
-addFile() - Добавление файлов в список наблюдения
+- addFile() - Добавление файлов в список наблюдения
 
-addFiles() - Добавление файлов в список наблюдения
+- addFiles() - Добавление файлов в список наблюдения
 
-checkAllFiles() - Основная логика: сравнение текущего и сохранённого состояния
+- checkAllFiles() - Основная логика: сравнение текущего и сохранённого состояния
 
-FileState (struct) - Хранение данных: существование, размер, дата изменения
+- FileState (struct) - Хранение данных: существование, размер, дата изменения
 
-deleteFile(const QString&) - удаление из списка отслеживаемых
+- deleteFile(const QString&) - удаление из списка отслеживаемых
 
-clear() - очистка всего списка
+- clear() - очистка всего списка
 
-getWatchedFiles() - получение списка отслеживаемых файлов
+- getWatchedFiles() - получение списка отслеживаемых файлов
 
-getFileCount() - получение количества отслеживаемых файлов
+- getFileCount() - получение количества отслеживаемых файлов
 
-isWatching(const QString&) - проверка, отслеживается ли файл
+- isWatching(const QString&) - проверка, отслеживается ли файл
 
 **Сигналы:**
 
-fileCreate(QString, qint64) - файл создан
+- fileCreate(QString, qint64) - файл создан
 
-fileDelete(QString) - файл удалён
+- fileDelete(QString) - файл удалён
 
-fileChangeSize(QString, qint64, qint64) - размер изменён
+- fileChangeSize(QString, qint64, qint64) - размер изменён
 
-fileModif(QString, qint64) - файл модифицирован
+- fileModif(QString, qint64) - файл модифицирован
 
-fileChange(QString, bool, qint64) - общее изменение статуса
+- fileChange(QString, bool, qint64) - общее изменение статуса
 
 
 
 ### 2. Класс Logger
-instance() - статический метод для получения единственного экземпляра;
-log(const QString&) - базовый вывод сообщения с временной меткой;
-getCurrentTime() - получение текущего времени в формате ЧЧ:ММ:СС.
+- instance() - статический метод для получения единственного экземпляра;
+- log(const QString&) - базовый вывод сообщения с временной меткой;
+- getCurrentTime() - получение текущего времени в формате ЧЧ:ММ:СС.
 
 Слоты:
-onFileCreated(QString, qint64) - обработка создания файла;
-onFileDeleted(QString) - обработка удаления файла;
-onFileSizeChanged(QString, qint64, qint64) - обработка изменения размера;
-onFileModified(QString, qint64) - обработка модификации файла;
-onFileChanged(QString, bool, qint64) - обработка общего изменения статуса.
+- onFileCreated(QString, qint64) - обработка создания файла;
+- onFileDeleted(QString) - обработка удаления файла;
+- onFileSizeChanged(QString, qint64, qint64) - обработка изменения размера;
+- onFileModified(QString, qint64) - обработка модификации файла;
+- onFileChanged(QString, bool, qint64) - обработка общего изменения статуса.
 ## 2.3 UML диаграмма
 https://drive.google.com/file/d/1a69oOEt5hJQszdIylOWRG-ithZRSluIQ/view?usp=sharing 
 # 3. Инструкция пользователя
