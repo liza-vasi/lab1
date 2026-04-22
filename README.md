@@ -62,7 +62,7 @@
 - onFileModified(QString, qint64) - обработка модификации файла;
 - onFileChanged(QString, bool, qint64) - обработка общего изменения статуса.
 ## 2.3 UML диаграмма
-[https://drive.google.com/file/d/1a69oOEt5hJQszdIylOWRG-ithZRSluIQ/view?usp=sharing ](https://app.diagrams.net/#G1s5LEUHnNpJphzJrtSYW5b-PUbiKt3_lM#%7B%22pageId%22%3A%22HBoBNv8hzEota1W1CNG9%22%7D)
+https://drive.google.com/file/d/1NaVR-63wr3n5adiRZYO1I7UvSCQxfkz4/view?usp=sharing
 # 3. Инструкция пользователя
 
 ## 3.1 Настройка программы
