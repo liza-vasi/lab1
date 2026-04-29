@@ -73,10 +73,10 @@ https://drive.google.com/file/d/1NaVR-63wr3n5adiRZYO1I7UvSCQxfkz4/view?usp=shari
 ## 3.2 Примеры запуска
 
 **Мониторинг одного файла с интервалом 1 секунда:**
-- `./file-watcher --interval=1000 /home/user/document.txt`
+- ` --interval=1000 /home/user/document.txt`
 
 **Мониторинг нескольких файлов с интервалом по умолчанию:**
-- `./file-watcher /home/user/file1.txt /home/user/file2.txt`
+- `/home/user/file1.txt /home/user/file2.txt`
 
 ## 3.3 Пример работы программы
 
