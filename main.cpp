@@ -13,7 +13,6 @@ std::atomic<bool> running(true);
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
-
     QStringList args = app.arguments();
     QStringList filePaths;
     int intervalMs = 100;
@@ -54,14 +53,34 @@ int main(int argc, char *argv[])
         manager.checkAllFiles();
 
 
-        std::string command;
-        std::getline(std::cin, command);
+            std::string command;
+            std::getline(std::cin, command);
 
-        if (command == "exit") {
-            running = false;
-        }
+            if (command == "exit") {
+                running = false;
+            }
+            else if (command.find("add ") == 0) {
+                QString filePath = QString::fromStdString(command.substr(4));
+                if (!filePath.isEmpty()) {
+                    manager.addFile(filePath);
+                    logger.log("Added: " + filePath);
+                }
+            }
+            else if (command.find("remove ") == 0) {
+                QString filePath = QString::fromStdString(command.substr(7));
+                if (!filePath.isEmpty()) {
+                    if (manager.isWatching(filePath)) {
+                        manager.deleteFile(filePath);
+                        logger.log("Removed: " + filePath);
+                    } else {
+                        logger.log("Error: file not in watch list: " + filePath);
+                    }
+                }
+            }
+
         std::this_thread::sleep_for(std::chrono::milliseconds(intervalMs));
     }
+
     logger.log("Program terminated");
     return 0;
 }
