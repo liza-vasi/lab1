@@ -2,13 +2,43 @@
 #include <QStringList>
 #include <thread>
 #include <chrono>
-#include <atomic>
 #include <csignal>
 #include <iostream>
 #include "filemanager.h"
 #include "logger.h"
 
-std::atomic<bool> running(true);
+bool running(true);
+bool inputRunning(true);
+
+void inputThread(FileManager& manager, Logger& logger) {
+    while (inputRunning) {
+        std::string command;
+        std::getline(std::cin, command);
+
+        if (command == "exit") {
+            running = false;
+            inputRunning = false;
+        }
+        else if (command.find("add ") == 0) {
+            QString filePath = QString::fromStdString(command.substr(4));
+            if (!filePath.isEmpty()) {
+                manager.addFile(filePath);
+                logger.log("Added: " + filePath);
+            }
+        }
+        else if (command.find("remove ") == 0) {
+            QString filePath = QString::fromStdString(command.substr(7));
+            if (!filePath.isEmpty()) {
+                if (manager.isWatching(filePath)) {
+                    manager.deleteFile(filePath);
+                    logger.log("Removed: " + filePath);
+                } else {
+                    logger.log("Error: file not in watch list: " + filePath);
+                }
+            }
+        }
+    }
+}
 
 int main(int argc, char *argv[])
 {
@@ -49,37 +79,15 @@ int main(int argc, char *argv[])
     logger.log("Initial state:");
 
     manager.addFiles(filePaths);
+    std::thread input(inputThread, std::ref(manager), std::ref(logger));
+
     while (running) {
         manager.checkAllFiles();
-
-
-            std::string command;
-            std::getline(std::cin, command);
-
-            if (command == "exit") {
-                running = false;
-            }
-            else if (command.find("add ") == 0) {
-                QString filePath = QString::fromStdString(command.substr(4));
-                if (!filePath.isEmpty()) {
-                    manager.addFile(filePath);
-                    logger.log("Added: " + filePath);
-                }
-            }
-            else if (command.find("remove ") == 0) {
-                QString filePath = QString::fromStdString(command.substr(7));
-                if (!filePath.isEmpty()) {
-                    if (manager.isWatching(filePath)) {
-                        manager.deleteFile(filePath);
-                        logger.log("Removed: " + filePath);
-                    } else {
-                        logger.log("Error: file not in watch list: " + filePath);
-                    }
-                }
-            }
-
         std::this_thread::sleep_for(std::chrono::milliseconds(intervalMs));
     }
+
+    inputRunning = false;
+    input.join();
 
     logger.log("Program terminated");
     return 0;
